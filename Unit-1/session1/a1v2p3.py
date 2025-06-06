@@ -1,16 +1,11 @@
 def shuffle(message, indices):
     n = len(indices)
-    res = [0] * n
-    j = 0
-    for i in indices:
-        res.insert(i, message[j])
-        j += 1
+    res = [''] * n  # Preallocate a list of correct size with empty strings
 
-    ans = ''
-    for string in res:
-        ans = res+string
-    
-    return ans
+    for j in range(n):
+        res[indices[j]] = message[j]  # Place each character at the correct index
+
+    return ''.join(res)  # Join list into a string
 
 
 
@@ -20,4 +15,4 @@ print(shuffle(message, indices))
 
 message = "findme"
 indices = [0, 1, 2, 3, 4, 5]
-shuffle(message, indices)
+print(shuffle(message, indices))
